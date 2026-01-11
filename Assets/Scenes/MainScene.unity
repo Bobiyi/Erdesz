@@ -301,83 +301,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
---- !u!1001 &232497198
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -2253911629886400664, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: -2253911629886400664, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_Name
-      value: server
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: -8435245712485981826, guid: 0b2b5722bb97a7c4481cbc8d0554e4cd, type: 3}
 --- !u!1 &1562955145
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +338,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -440,7 +363,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.75
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -551,7 +474,7 @@ MonoBehaviour:
   columns: 9
   cellSize: {x: 128, y: 128}
   usePrefabSize: 1
-  padding: {x: 0, y: 0}
+  padding: {x: 0, y: -0.01}
 --- !u!4 &1919304173
 Transform:
   m_ObjectHideFlags: 0
@@ -573,6 +496,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 1562955148}
   - {fileID: 86646067}
-  - {fileID: 232497198}
   - {fileID: 168025673}
   - {fileID: 1919304173}

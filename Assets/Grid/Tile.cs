@@ -4,7 +4,9 @@ using UnityEngine;
 
 public interface Tile 
 {
-    public void OnHover();
 
     public void Highlight();
+
+    public void unHighlight();
+
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class GridManagerScript : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class GridManagerScript : MonoBehaviour
     [SerializeField] private Vector2 padding = new Vector2(0.0f, 0.0f);
 
     [SerializeField] private List<List<Tile>> Tiles = new List<List<Tile>>();
-    void Start()
+    void Awake()
     {
         if (tilePrefab != null && (tilesParent == null || tilesParent.childCount == 0))
         {
@@ -49,21 +50,80 @@ public class GridManagerScript : MonoBehaviour
             Debug.LogWarning("HighlightTiles: provided tile not found in grid.", this);
             return;
         }
-
+        ClearHighlights();
         HighlightRow(row);
         HighlightColumn(col);
 
 
     }
 
-    private void HighlightColumn(int col)
+    public void ClearHighlights()
     {
-        
+        if (Tiles == null) return;
+
+        for (int r = 0; r < Tiles.Count; r++)
+        {
+            var row = Tiles[r];
+            if (row == null) continue;
+            for (int c = 0; c < row.Count; c++)
+            {
+                try
+                {
+                    row[c]?.unHighlight();
+                }
+                catch(Exception ex)
+                {
+                    Debug.LogError($"ClearHighlights: error calling Unhighlight on tile at [{r},{c}]: {ex}");
+
+                }
+            }
+        }
     }
 
     private void HighlightRow(int row)
     {
-        
+        if (Tiles == null || Tiles.Count == 0) return;
+        if (row < 0 || row >= Tiles.Count) return;
+
+        var rowList = Tiles[row];
+        if (rowList == null) return;
+
+        for(int c = 0; c<rowList.Count; c++)
+        {
+            var t = rowList[c];
+            try
+            {
+                t?.Highlight();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"HighlightRow: error calling Highlight on tile at row {row} col {c}: {ex}");
+
+            }
+        }
+    }
+
+    private void HighlightColumn(int col)
+    {
+        if (Tiles == null || Tiles.Count == 0) return;
+        if (col < 0) return;
+
+        for(int r = 0; r < Tiles.Count;r++)
+        {
+            var rowList = Tiles[r];
+            if (rowList == null) continue;
+            if (col >= rowList.Count) continue;
+
+            var t = rowList[col];
+            try
+            {
+                t?.Highlight();
+            } 
+            catch(Exception ex)
+            {
+                Debug.LogError($"HighlightColumn: error calling Highlight on tile at col {col} row {r}: {ex}");
+            }
+        }
     }
 
     private void FillTiles()
@@ -186,9 +246,10 @@ public class GridManagerScript : MonoBehaviour
             for (int c = 0; c < columns; c++)
             {
                 var go = Instantiate(original: tilePrefab, parent: tilesParent);
-                // Positioning: top-left origin (row 0 = top). Adjust as needed.
+                // Positioning: top-left origin (row 0 = top).
                 var localPos = new Vector3(c * actualCellSize.x, -r * actualCellSize.y, 1f);
                 go.transform.localPosition = localPos;
+                go.gameObject.name = $"Tile([{r},{c}])";
                 go.transform.localRotation = Quaternion.identity;
                 go.transform.localScale = tilePrefab.transform.localScale;
 
