@@ -66,4 +66,10 @@ public class TileScript : MonoBehaviour,Tile
     {
         gridManager?.ClearHighlights();
     }
+
+    public void SnapPlantToGrid(Plant p)
+    {
+        p.transform.position = transform.position;
+
+    }
 }

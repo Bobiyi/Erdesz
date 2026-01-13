@@ -9,4 +9,6 @@ public interface Tile
 
     public void unHighlight();
 
+    public void SnapPlantToGrid(Plant plant);
+
 }
