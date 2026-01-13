@@ -17,15 +17,6 @@ public class Server : MonoBehaviour
         
     }
 
-    private void OnMouseDown()
-    {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x,Input.mousePosition.y-50f));
 
-
-
-        Debug.Log("Dragging  " + gameObject.name);
-
-        transform.position = mousePos;
-    }
 
 }
