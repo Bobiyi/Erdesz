@@ -8,7 +8,6 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class GridManagerScript : MonoBehaviour
 {
-
     [Header("Tile source")]
     [SerializeField] private Transform tilesParent;
     [SerializeField] private float Tolerance = 0.01f;
@@ -28,6 +27,7 @@ public class GridManagerScript : MonoBehaviour
     [SerializeField] private Vector2 padding = new Vector2(0.0f, 0.0f);
 
     [SerializeField] private List<List<Tile>> Tiles = new List<List<Tile>>();
+
     void Awake()
     {
         if (tilePrefab != null && (tilesParent == null || tilesParent.childCount == 0))
@@ -40,7 +40,6 @@ public class GridManagerScript : MonoBehaviour
         }
     }
 
-    
     public void HighlightTiles(Tile tile)
     {
         if (tile == null) return;
@@ -53,8 +52,6 @@ public class GridManagerScript : MonoBehaviour
         ClearHighlights();
         HighlightRow(row);
         HighlightColumn(col);
-
-
     }
 
     public void ClearHighlights()
@@ -74,7 +71,6 @@ public class GridManagerScript : MonoBehaviour
                 catch(Exception ex)
                 {
                     Debug.LogError($"ClearHighlights: error calling Unhighlight on tile at [{r},{c}]: {ex}");
-
                 }
             }
         }
@@ -98,7 +94,6 @@ public class GridManagerScript : MonoBehaviour
             catch (Exception ex)
             {
                 Debug.LogError($"HighlightRow: error calling Highlight on tile at row {row} col {c}: {ex}");
-
             }
         }
     }
@@ -168,7 +163,6 @@ public class GridManagerScript : MonoBehaviour
         }
 
         Debug.Log($"GridManager : filled Tiles grid {ys.Length} rows x {xs.Length} cols from parent '{parent.name}'.");
-
     }
 
     private void GenerateGridFromPrefab()
@@ -295,5 +289,39 @@ public class GridManagerScript : MonoBehaviour
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Returns the nearest tile to the provided world position, or null if none found within maxDistance.
+    /// </summary>
+    public Tile GetNearestTile(Vector3 worldPosition, float maxDistance = Mathf.Infinity)
+    {
+        if (Tiles == null) return null;
+
+        Tile best = null;
+        float bestSqr = maxDistance <= 0f ? 0f : maxDistance * maxDistance;
+
+        // if maxDistance is Infinity, set bestSqr to Mathf.Infinity so any distance is valid
+        if (float.IsInfinity(bestSqr)) bestSqr = float.PositiveInfinity;
+
+        for (int r = 0; r < Tiles.Count; r++)
+        {
+            var row = Tiles[r];
+            if (row == null) continue;
+            for (int c = 0; c < row.Count; c++)
+            {
+                var t = row[c] as TileScript;
+                if (t == null) continue;
+                var tp = t.transform.position;
+                float sqr = (tp - worldPosition).sqrMagnitude;
+                if (sqr < bestSqr)
+                {
+                    bestSqr = sqr;
+                    best = t;
+                }
+            }
+        }
+
+        return best;
     }
 }
