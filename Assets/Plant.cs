@@ -5,8 +5,7 @@ using UnityEngine;
 
 public abstract class Plant : MonoBehaviour
 {
-    private int health;
-    private int cost;
+    private int health,cost;
 
     public int Health { get => health; protected set => health = value; }
     public int Cost { get => cost; protected set => cost = value; }

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: df00de82b5afb2e4faf97c711e4cd72c, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: df00de82b5afb2e4faf97c711e4cd72c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.53

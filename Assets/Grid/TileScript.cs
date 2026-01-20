@@ -103,7 +103,6 @@ public class TileScript : MonoBehaviour,Tile
         occupied = true;
 
         // Let the plant know which tile it's on so it can release itself later.
-        p.SetCurrentTile(this);
     }
 
     /// <summary>

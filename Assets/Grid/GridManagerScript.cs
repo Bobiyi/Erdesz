@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public class GridManagerScript : MonoBehaviour
 {
@@ -324,4 +322,5 @@ public class GridManagerScript : MonoBehaviour
 
         return best;
     }
+
 }
